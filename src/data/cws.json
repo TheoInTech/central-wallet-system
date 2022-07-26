@@ -1,3 +1,8 @@
 {
-  "balance": 0
+  "data": {
+    "balance": 0.0,
+    "currency": "PHP",
+    "lastUpdated": "Tue Jul 26 2022 16:15:16 GMT+0800 (China Standard Time)",
+    "txHistory": []
+  }
 }
