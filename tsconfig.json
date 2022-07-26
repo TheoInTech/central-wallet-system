@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es6",
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -10,12 +11,16 @@
     "noFallthroughCasesInSwitch": true,
     "module": "commonjs",
     "moduleResolution": "node",
+    "rootDir": "./",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "useUnknownInCatchVariables": false
+    "useUnknownInCatchVariables": false,
+    "noImplicitAny": false,
+    "baseUrl": "./src",
   },
   "ts-node": {
     "esm": true
-  }
+  },
+  "include": [".", "./src/*"]
 }
