@@ -114,7 +114,7 @@ async function debit(tx) {
       ...txHistory,
       {
         id: txId,
-        method: TX_METHOD.CASH_IN,
+        method: TX_METHOD.DEBIT,
         amount: txAmount,
         balance: newBalance,
         date: date,
