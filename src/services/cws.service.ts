@@ -45,10 +45,14 @@ async function cashIn(tx) {
   const { amount: txAmount, currency: txCurrency } = tx;
   const { balance, currency, txHistory } = cwsData.data;
 
-  if (txCurrency != currency) {
+  if (!txAmount || !txCurrency) {
+    throw new Error(`Transaction amount and currency are required`);
+  } else if (txCurrency != currency) {
     throw new Error(`System only accepts ${currency} currency`);
   } else if (txAmount <= 0) {
     throw new Error(`Please cash in more than 0 ${currency}`);
+  } else if (typeof txAmount !== 'number') {
+    throw new Error(`Please input a number amount`);
   }
 
   const newBalance = txAmount + balance;
@@ -87,10 +91,14 @@ async function debit(tx) {
   const { amount: txAmount, currency: txCurrency } = tx;
   const { balance, currency, txHistory } = cwsData.data;
 
-  if (txCurrency != currency) {
+  if (!txAmount || !txCurrency) {
+    throw new Error(`Transaction amount and currency are required`);
+  } else if (txCurrency != currency) {
     throw new Error(`System only accepts ${currency} currency`);
   } else if (txAmount > balance) {
     throw new Error(`Insufficient funds`);
+  } else if (typeof txAmount !== 'number') {
+    throw new Error(`Please input a number amount`);
   }
 
   const newBalance = balance - txAmount;

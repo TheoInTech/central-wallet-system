@@ -1,9 +1,8 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import cors from 'cors';
-import lodash from 'lodash';
 
 import cwsRoutes from './src/routes/cws.route';
+import { rateLimiter } from './src/middlewares';
 
 const app = express();
 const PORT = 3000;
@@ -14,6 +13,7 @@ app.use(
     extended: true,
   })
 );
+app.use(rateLimiter);
 
 app.get('/', (_req, res) => {
   res.json({ message: 'ok' });
